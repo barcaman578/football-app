@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-4 py-16 text-center">
-      <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl">
+      <h1 className="text-4xl font-extrabold tracking-tight">
         Ball<span className="text-emerald-400">knowledge</span>
       </h1>
       <p className="mt-4 max-w-md text-zinc-400">
