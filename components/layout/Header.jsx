@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { logout } from "@/lib/actions/auth";
+import { getOwnProfile } from "@/lib/actions/profile";
 
 export default async function Header() {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  const profile = user ? await getOwnProfile() : null;
 
   return (
     <header className="flex items-center justify-between border-b border-zinc-800 bg-black px-6 py-4">
@@ -17,7 +20,12 @@ export default async function Header() {
       <nav className="flex items-center gap-4">
         {user ? (
           <>
-            <span className="text-sm text-zinc-400">{user.email}</span>
+            <Link
+              href="/profile"
+              className="text-sm font-semibold text-white hover:text-emerald-400"
+            >
+              {profile?.username ?? "Profile"}
+            </Link>
             <form action={logout}>
               <button
                 type="submit"
