@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Settings } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { logout } from "@/lib/actions/auth";
 import { getOwnProfile } from "@/lib/actions/profile";
@@ -25,6 +26,13 @@ export default async function Header() {
               className="text-sm font-semibold text-white hover:text-emerald-400"
             >
               {profile?.username ?? "Profile"}
+            </Link>
+            <Link
+              href="/settings"
+              aria-label="Settings"
+              className="text-zinc-400 hover:text-emerald-400"
+            >
+              <Settings size={18} />
             </Link>
             <form action={logout}>
               <button
