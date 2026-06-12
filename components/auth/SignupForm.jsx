@@ -11,8 +11,8 @@ export default function SignupForm() {
 
   return (
     <form action={formAction} className="flex flex-col gap-4 w-full max-w-sm">
-      <div className="flex flex-col gap-1">
-        <label htmlFor="email" className="text-sm font-medium text-zinc-300">
+      <div className="flex flex-col gap-1.5">
+        <label htmlFor="email" className="text-xs font-black uppercase tracking-widest" style={{ color: "#888888" }}>
           Email
         </label>
         <input
@@ -20,12 +20,13 @@ export default function SignupForm() {
           name="email"
           type="email"
           required
-          className="rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          className="border px-3 py-2.5 text-sm text-white outline-none focus:border-[#00ff87]"
+          style={{ background: "#111111", borderColor: "#333333" }}
         />
       </div>
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="password" className="text-sm font-medium text-zinc-300">
+      <div className="flex flex-col gap-1.5">
+        <label htmlFor="password" className="text-xs font-black uppercase tracking-widest" style={{ color: "#888888" }}>
           Password
         </label>
         <input
@@ -34,28 +35,26 @@ export default function SignupForm() {
           type="password"
           minLength={6}
           required
-          className="rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          className="border px-3 py-2.5 text-sm text-white outline-none focus:border-[#00ff87]"
+          style={{ background: "#111111", borderColor: "#333333" }}
         />
       </div>
 
-      {state?.error && <p className="text-sm text-red-400">{state.error}</p>}
-      {state?.success && (
-        <p className="text-sm text-emerald-400">{state.success}</p>
-      )}
+      {state?.error && <p className="text-sm" style={{ color: "#ff4444" }}>{state.error}</p>}
+      {state?.success && <p className="text-sm font-semibold" style={{ color: "#00ff87" }}>{state.success}</p>}
 
       <button
         type="submit"
         disabled={pending}
-        className="mt-2 rounded-md bg-emerald-500 px-4 py-2 font-bold text-black transition hover:bg-emerald-400 disabled:opacity-50"
+        className="mt-2 py-3 text-sm font-black uppercase tracking-widest text-black transition hover:opacity-90 disabled:opacity-50"
+        style={{ background: "#00ff87" }}
       >
         {pending ? "Signing up..." : "Sign Up"}
       </button>
 
-      <p className="text-sm text-zinc-400">
+      <p className="text-sm" style={{ color: "#888888" }}>
         Already have an account?{" "}
-        <Link href="/login" className="text-emerald-400 hover:underline">
-          Log in
-        </Link>
+        <Link href="/login" className="font-bold text-white hover:text-[#00ff87]">Log in</Link>
       </p>
     </form>
   );
