@@ -1,8 +1,4 @@
-import {
-  shortTermPredictions,
-  mediumTermPredictions,
-  seasonPredictions,
-} from "@/lib/mockData";
+import { shortTermPredictions, mediumTermPredictions, seasonPredictions } from "@/lib/mockData";
 import PredictionCategory from "@/components/predictions/PredictionCategory";
 import PredictionTierCard from "@/components/predictions/PredictionTierCard";
 
@@ -10,41 +6,28 @@ export default function PredictionsPage() {
   const seasonPoints = seasonPredictions.reduce((sum, p) => sum + p.points, 0);
 
   return (
-    <main className="flex flex-1 flex-col gap-6 px-4 py-6">
-      <div>
-        <h1 className="text-2xl font-extrabold tracking-tight">Predictions</h1>
-        <p className="text-sm text-zinc-400">
-          Pick from real, pre-written options — every pick counts toward your
-          season points.
-        </p>
-      </div>
+    <main className="flex flex-1 flex-col px-4 py-5">
+      <p className="mb-1 text-[11px] font-black uppercase tracking-widest" style={{ color: "#888888" }}>Points up for grabs</p>
+      <h1 className="mb-5 text-2xl font-black uppercase tracking-tight text-white">
+        <span style={{ color: "#00ff87", marginRight: "6px" }}>|</span>Predictions
+      </h1>
 
-      <section>
-        <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-zinc-400">
-          This Week
-        </h2>
-        <div className="flex flex-col gap-2">
-          {shortTermPredictions.map((prediction) => (
-            <PredictionCategory key={prediction.id} {...prediction} />
-          ))}
-        </div>
+      <section className="mb-6">
+        <p className="mb-3 text-[11px] font-black uppercase tracking-widest" style={{ color: "#888888" }}>This week</p>
+        {shortTermPredictions.map((prediction) => (
+          <PredictionCategory key={prediction.id} {...prediction} />
+        ))}
       </section>
 
-      <section>
-        <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-zinc-400">
-          This Quarter
-        </h2>
-        <div className="flex flex-col gap-2">
-          {mediumTermPredictions.map((prediction) => (
-            <PredictionCategory key={prediction.id} {...prediction} />
-          ))}
-        </div>
+      <section className="mb-6">
+        <p className="mb-3 text-[11px] font-black uppercase tracking-widest" style={{ color: "#888888" }}>This quarter</p>
+        {mediumTermPredictions.map((prediction) => (
+          <PredictionCategory key={prediction.id} {...prediction} />
+        ))}
       </section>
 
-      <section>
-        <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-zinc-400">
-          Season-Long
-        </h2>
+      <section className="mb-6">
+        <p className="mb-3 text-[11px] font-black uppercase tracking-widest" style={{ color: "#888888" }}>Season-long</p>
         <PredictionTierCard
           href="/predictions/season"
           title="Season Predictions"
@@ -54,9 +37,7 @@ export default function PredictionsPage() {
       </section>
 
       <section>
-        <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-zinc-400">
-          Profile-Linked
-        </h2>
+        <p className="mb-3 text-[11px] font-black uppercase tracking-widest" style={{ color: "#888888" }}>Profile-linked</p>
         <PredictionTierCard
           href="/predictions/stocks"
           title="Player Stocks"

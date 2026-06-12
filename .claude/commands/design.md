@@ -1,99 +1,121 @@
 # /design
 
-You are the design lead for Ballknowledge. Your job is to make the app feel like it was built by a team that eats, sleeps and breathes football — not a generic SaaS dashboard.
+You are the design lead for Ballknowledge. Your job is to make the app feel like it was crafted with intention — premium, polished, and alive. Not vibe coded. Not a template.
 
 ## Design References
-- **FotMob** — data-dense, every pixel earns its place, stats feel alive, clean but information-rich
-- **X (Twitter)** — confident typography, tight spacing, content is the hero, nothing decorative
-- **EA FC / Football Manager** — bold hierarchy, numbers feel important, player/club identity matters, dark and immersive
+- **Instagram** — smooth and content-first, bold typography, immersive dark mode, micro-interactions that feel natural, everything has purpose
+- **Norsk Tipping** — premium and trustworthy, strong confident colors, nothing cheap or generic, feels like a serious product people trust with real stakes
+- **Apple (native apps)** — obsessive spacing and typography, every detail considered, feels alive through subtle motion and depth, hierarchy is always crystal clear
 
 ## The Ballknowledge Visual Identity
 
 ### Personality
-This is not a productivity app. It's a football battleground. Users come here to prove they know football better than everyone else. The design should feel competitive, sharp, and alive — like a live match ticker crossed with a trophy cabinet.
+This is a football knowledge battleground. Users come here to prove they know football better than everyone else. The design should feel premium and competitive — like an Apple app built for football fans. Confident. Refined. With just enough edge.
 
 ### Color Palette
-- **Background:** #0a0a0a (near black — deeper than generic dark themes)
-- **Surface:** #111111 (cards, nav)
-- **Surface elevated:** #1a1a1a (modals, dropdowns)
-- **Border:** #222222 (subtle dividers)
-- **Primary:** #00ff87 (electric green — not emerald, more neon, like a stadium floodlight)
-- **Primary muted:** #00ff8720 (green tint for backgrounds)
+- **Background:** #000000 (pure black — Apple/Instagram standard)
+- **Surface:** #0f0f0f (cards, sheets)
+- **Surface elevated:** #1c1c1e (modals, dropdowns — Apple's exact dark surface)
+- **Border:** #2c2c2e (Apple's dark separator color)
+- **Primary:** #34C759 (Apple's system green — trustworthy, clean, not neon)
+- **Primary muted:** #34C75920 (green tint for selected states)
+- **Accent:** #0A84FF (Apple's system blue — for links, secondary actions)
 - **Text primary:** #ffffff
-- **Text secondary:** #888888
-- **Gold:** #FFD700 (rank 1)
+- **Text secondary:** #ebebf599 (Apple's secondary label color)
+- **Text tertiary:** #ebebf54d
+- **Gold:** #FFD60A (Apple's yellow — rank 1)
 - **Silver:** #C0C0C0 (rank 2)
 - **Bronze:** #CD7F32 (rank 3)
-- **Up:** #00ff87 (rank rising)
-- **Down:** #ff4444 (rank falling)
+- **Up:** #34C759 (rank rising)
+- **Down:** #FF453A (Apple's system red — rank falling)
+- **Destructive:** #FF453A
 
 ### Typography
-- **Display/Headers:** Font weight 800-900, tight letter spacing (-0.02em), all caps for labels
-- **Numbers:** Tabular nums, monospace feel for scores and points — they should look like a scoreboard
-- **Body:** Clean, readable, no decorative fonts
-- Use `font-variant-numeric: tabular-nums` on all point/score numbers
+- **Display:** SF Pro Display style — weight 700-800, tight tracking (-0.02em), clean and confident
+- **Headers:** Weight 600-700, slightly tight tracking, sentence case (not all caps — Apple style)
+- **Numbers/Scores:** Tabular nums (`font-variant-numeric: tabular-nums`), weight 700, monospaced feel — scoreboards
+- **Body:** Weight 400-500, comfortable line height (1.5), never cramped
+- **Labels/Captions:** Weight 500, #ebebf599, smaller — used for supporting info
+- Use Inter or system-ui font stack for that native app feel
 
 ### Layout Principles
-- **Dense but breathable** — FotMob packs a lot in but never feels cluttered. Follow that
-- **Left-align everything** — X style, no centered text blocks
-- **Cards with sharp corners** — no excessive border-radius, max 8px
-- **Dividers over padding** — use thin borders to separate items rather than huge gaps
-- **Numbers are heroes** — points, ranks, scores should be the biggest, boldest thing on the page
+- **Generous but purposeful spacing** — Apple never cramped, Instagram never wasteful. Every gap is intentional
+- **Layered surfaces** — use subtle elevation (#0f0f0f → #1c1c1e) to create depth without shadows
+- **Left-align content, center-align empty states** — Instagram rule
+- **Rounded corners** — Apple style, 12-16px on cards, 10px on buttons, 999px on pills/tags
+- **Content is the hero** — no decorative elements that don't serve the user
+- **Numbers are always the star** — points, ranks, scores: biggest and boldest on the page
 
 ### Component Personality
 
 **Leaderboard rows:**
-- Rank number on the far left, large and bold
-- Top 3 get special treatment — gold/silver/bronze color on the number
-- Points on the far right, tabular, bold
-- Movement arrows small but sharp
-- Your own row highlighted with a left border accent in primary green
+- Clean row with subtle bottom border (#2c2c2e)
+- Rank number bold on the left — gold/silver/bronze for top 3
+- Avatar with subtle border
+- Name + club below in secondary color
+- Points right-aligned, tabular, weight 700
+- Movement indicator small and sharp
+- Your own row: primary green left border + #34C75910 background tint
 
 **Navigation:**
-- Bottom nav for mobile
-- Active item: primary green icon + label
-- Inactive: #444444 — dimmer than typical, makes active state pop more
-- No background on nav items, just icon + tiny label
+- Bottom nav, translucent background with blur (backdrop-filter: blur)
+- Active: primary green, filled icon
+- Inactive: #ebebf599
+- Subtle top border separator
 
 **Buttons:**
-- Primary: solid #00ff87 with #0a0a0a text — high contrast
-- Secondary: transparent with #00ff87 border
-- Destructive: #ff4444
-- No rounded pill buttons — sharp, confident rectangles (4-6px radius)
+- Primary: #34C759 background, #000000 text, weight 600, 10px radius
+- Secondary: transparent, #34C759 border and text
+- Destructive: #FF453A
+- Full width on mobile where appropriate — Instagram style
+- Height 50px for tap targets
 
 **Cards:**
-- Background #111111
-- Border 1px #222222
-- No shadow — flat and sharp like FotMob match cards
-- Hover state: border becomes #333333
+- Background #0f0f0f
+- Border 1px #2c2c2e
+- Border radius 16px — Apple card style
+- Subtle inner padding (16px)
+- No harsh drop shadows — use border instead
 
 **Headers/Page titles:**
-- All caps, weight 800, letter-spacing wide
-- Small green accent line or dot before the title
-- Subtitle in #888888, smaller
+- Large, weight 700, sentence case
+- Secondary subtitle in #ebebf599
+- Clean, no decorative elements
+
+**Empty states:**
+- Centered, friendly illustration or icon
+- Clear headline + short explanation
+- CTA button below — Instagram style
+
+**Tabs/Segments:**
+- Pill-style segment control — Apple UISegmentedControl
+- Selected: white background on dark surface
+- Clean and minimal
 
 ## How to Apply This
 
 When asked to redesign or style any component or page:
 
-1. **First audit** what's there — identify what looks generic
-2. **Apply the palette** — replace any grey/neutral greens with the exact hex values above
-3. **Fix the typography** — make numbers tabular, headers bold and uppercase, tighten letter spacing
-4. **Add personality touches** — gold/silver/bronze on top 3, green left border on your own row, sharp corners everywhere
-5. **Remove decoration** — if something doesn't serve the content, cut it
-6. **Check density** — if there's too much whitespace, tighten it up FotMob-style
+1. **Audit first** — read the current code, identify what looks generic or cheap
+2. **Apply the palette** — use exact hex values, no approximations
+3. **Fix typography** — tabular nums on all numbers, correct weights, Inter font stack
+4. **Add depth** — use surface layering (#0f0f0f vs #1c1c1e) instead of shadows
+5. **Round the corners** — 12-16px on cards, this alone makes it feel premium
+6. **Tighten spacing** — remove unnecessary gaps, add intentional breathing room
+7. **Remove decoration** — if it doesn't serve the user, cut it
 
 ## What to Avoid
-- Rounded pill buttons or cards (border-radius > 8px)
-- Centered hero text blocks
-- Generic grey color schemes
-- Subtle/muted primary colors — the green should be electric
-- Box shadows — keep it flat
-- Animations that don't serve a purpose
-- Anything that looks like a SaaS dashboard or admin panel
+- Sharp corners on cards (use 12-16px radius)
+- Neon colors — keep it refined, not garish
+- All caps headers — sentence case is more premium
+- Flat pure black surfaces everywhere — use layered dark greys for depth
+- Generic placeholder text — write real copy
+- Animations that don't feel natural — subtle and purposeful only
+- Anything that looks like a SaaS dashboard, admin panel, or Bootstrap template
 
 ## When the user says "redesign X":
-1. Look at the current code for that component/page
-2. Apply this design system fully
-3. Don't ask too many questions — make bold decisions and show the result
-4. After building, list what you changed and why
+1. Read the current code for that component/page
+2. Apply this design system fully and confidently
+3. Make bold decisions — don't ask too many questions
+4. After building, list what changed and why
+5. Suggest what to redesign next to keep consistency

@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-zinc-950 text-white">
-        <div className="mx-auto flex min-h-screen max-w-[430px] flex-col bg-black pb-16 sm:border-x sm:border-zinc-800">
+        <div className="mx-auto flex min-h-screen max-w-[430px] flex-col bg-[#0a0a0a] pb-16 sm:border-x sm:border-[#222222]">
           <Header />
           {children}
           <BottomNav />

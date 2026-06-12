@@ -6,15 +6,13 @@ export default function PredictionCategory({ title, points, deadline, options })
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="rounded-md border border-zinc-800 bg-zinc-900 p-3">
-      <div className="mb-2 flex items-center justify-between gap-2">
-        <p className="text-sm font-semibold text-white">{title}</p>
-        <span className="shrink-0 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-bold text-emerald-400">
-          +{points} pts
-        </span>
+    <div className="border-b px-0 py-4" style={{ borderColor: "#222222" }}>
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <p className="text-sm font-bold text-white">{title}</p>
+        <span className="text-xs font-black" style={{ color: "#00ff87" }}>+{points} pts</span>
       </div>
       {deadline && (
-        <p className="mb-2 text-xs text-zinc-500">Deadline: {deadline}</p>
+        <p className="mb-3 text-xs" style={{ color: "#888888" }}>Closes {deadline}</p>
       )}
       <div className="flex flex-wrap gap-2">
         {options.map((option) => (
@@ -22,11 +20,12 @@ export default function PredictionCategory({ title, points, deadline, options })
             key={option}
             type="button"
             onClick={() => setSelected(option)}
-            className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition ${
+            className="px-3 py-1.5 text-xs font-bold transition"
+            style={
               selected === option
-                ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
-                : "border-zinc-700 text-zinc-300 hover:border-zinc-500"
-            }`}
+                ? { background: "#00ff87", color: "#0a0a0a", border: "1px solid #00ff87" }
+                : { background: "transparent", color: "#888888", border: "1px solid #333333" }
+            }
           >
             {option}
           </button>

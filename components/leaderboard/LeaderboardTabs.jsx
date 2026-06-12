@@ -3,9 +3,9 @@
 import { useState } from "react";
 
 const tabs = [
-  { id: "global", label: "Global" },
-  { id: "club", label: "Club" },
-  { id: "leagues", label: "Private" },
+  { id: "global", label: "GLOBAL" },
+  { id: "club", label: "CLUB" },
+  { id: "leagues", label: "PRIVATE" },
 ];
 
 export default function LeaderboardTabs({ global, club, leagues }) {
@@ -14,17 +14,18 @@ export default function LeaderboardTabs({ global, club, leagues }) {
 
   return (
     <div className="w-full">
-      <div className="mb-4 flex gap-1 rounded-md bg-zinc-900 p-1">
+      <div className="mb-4 flex border-b" style={{ borderColor: "#222222" }}>
         {tabs.map((t) => (
           <button
             key={t.id}
             type="button"
             onClick={() => setTab(t.id)}
-            className={`flex-1 rounded-md py-1.5 text-sm font-semibold transition ${
-              tab === t.id
-                ? "bg-emerald-500 text-black"
-                : "text-zinc-400 hover:text-white"
-            }`}
+            className="flex-1 pb-2.5 pt-1 text-xs font-black tracking-widest transition-colors"
+            style={{
+              color: tab === t.id ? "#00ff87" : "#444444",
+              borderBottom: tab === t.id ? "2px solid #00ff87" : "2px solid transparent",
+              marginBottom: "-1px",
+            }}
           >
             {t.label}
           </button>

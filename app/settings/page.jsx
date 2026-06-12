@@ -10,45 +10,38 @@ const items = [
 
 export default function SettingsPage() {
   return (
-    <main className="flex flex-1 flex-col gap-4 px-4 py-6">
-      <h1 className="text-2xl font-extrabold tracking-tight">Settings</h1>
+    <main className="flex flex-1 flex-col px-4 py-5">
+      <h1 className="mb-5 text-2xl font-black uppercase tracking-tight text-white">
+        <span style={{ color: "#00ff87", marginRight: "6px" }}>|</span>Settings
+      </h1>
 
-      <div className="rounded-md border border-emerald-500/40 bg-emerald-500/10 p-4">
-        <p className="text-sm font-bold text-emerald-400">
-          Ballknowledge Premium
+      {/* Premium banner */}
+      <div className="mb-5 border-l-2 p-4" style={{ borderColor: "#00ff87", background: "#00ff8710" }}>
+        <p className="text-sm font-black uppercase tracking-wide" style={{ color: "#00ff87" }}>Ballknowledge Premium</p>
+        <p className="mt-1 text-xs leading-relaxed" style={{ color: "#888888" }}>
+          Unlock private &quot;worst takes&quot; stats, deeper club analytics, and exclusive perks.
         </p>
-        <p className="mt-1 text-xs text-zinc-300">
-          Unlock private &quot;worst takes&quot; stats, deeper club
-          analytics, and exclusive perks.
-        </p>
-        <button
-          type="button"
-          className="mt-3 rounded-md bg-emerald-500 px-3 py-1.5 text-sm font-bold text-black transition hover:bg-emerald-400"
-        >
+        <button type="button" className="mt-3 px-4 py-2 text-xs font-black uppercase tracking-widest text-black transition hover:opacity-90" style={{ background: "#00ff87" }}>
           Upgrade
         </button>
       </div>
 
-      <div className="flex flex-col divide-y divide-zinc-800 rounded-md border border-zinc-800 bg-zinc-900">
+      {/* Menu items */}
+      <div className="border-t mb-5" style={{ borderColor: "#222222" }}>
         {items.map(({ icon: Icon, label, href }) => (
-          <Link
-            key={label}
-            href={href}
-            className="flex items-center justify-between px-4 py-3 transition hover:bg-zinc-800"
-          >
+          <Link key={label} href={href} className="flex items-center justify-between border-b py-3.5 transition hover:text-[#00ff87]" style={{ borderColor: "#222222" }}>
             <span className="flex items-center gap-3 text-sm font-semibold text-white">
-              <Icon size={18} className="text-zinc-400" /> {label}
+              <Icon size={16} style={{ color: "#888888" }} />
+              {label}
             </span>
-            <ChevronRight size={18} className="text-zinc-500" />
+            <ChevronRight size={16} style={{ color: "#444444" }} />
           </Link>
         ))}
       </div>
 
+      {/* Log out */}
       <form action={logout}>
-        <button
-          type="submit"
-          className="w-full rounded-md border border-zinc-700 px-4 py-2.5 text-sm font-semibold text-red-400 transition hover:bg-zinc-800"
-        >
+        <button type="submit" className="w-full border py-2.5 text-sm font-black uppercase tracking-widest transition hover:border-[#ff4444] hover:text-[#ff4444]" style={{ borderColor: "#333333", color: "#888888" }}>
           Log Out
         </button>
       </form>

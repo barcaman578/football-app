@@ -11,33 +11,42 @@ export default function LeaderboardPage() {
     .sort((a, b) => b.points - a.points);
 
   const global = (
-    <div className="flex flex-col gap-1">
-      {leaderboardUsers.map((user, i) => (
-        <LeaderboardRow key={user.username} rank={i + 1} user={user} />
-      ))}
+    <div
+      className="divide-y"
+      style={{ borderColor: "#222222", border: "1px solid #222222", divideColor: "#222222" }}
+    >
+      <div className="divide-y divide-[#222222] border border-[#222222]">
+        {leaderboardUsers.map((user, i) => (
+          <LeaderboardRow key={user.username} rank={i + 1} user={user} />
+        ))}
+      </div>
     </div>
   );
 
   const club = (
-    <div className="flex flex-col gap-1">
-      <p className="mb-2 text-sm text-zinc-400">
-        Showing fans of{" "}
-        <span className="font-semibold text-white">{currentUser.club}</span>
+    <div>
+      <p
+        className="mb-3 text-[11px] font-black tracking-widest uppercase"
+        style={{ color: "#888888" }}
+      >
+        {currentUser.club} fans
       </p>
-      {clubUsers.map((user, i) => (
-        <LeaderboardRow key={user.username} rank={i + 1} user={user} />
-      ))}
+      <div className="divide-y divide-[#222222] border border-[#222222]">
+        {clubUsers.map((user, i) => (
+          <LeaderboardRow key={user.username} rank={i + 1} user={user} />
+        ))}
+      </div>
     </div>
   );
 
   const leagues = (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-2">
       {privateLeagues.map((league) => (
         <LeagueCard key={league.id} league={league} />
       ))}
       <button
         type="button"
-        className="mt-2 rounded-md border border-dashed border-zinc-700 px-4 py-3 text-sm font-semibold text-zinc-400 transition hover:border-emerald-500 hover:text-emerald-400"
+        className="mt-1 border border-[#222222] bg-transparent px-4 py-3 text-xs font-black uppercase tracking-widest text-[#444444] transition hover:border-[#00ff87] hover:text-[#00ff87]"
       >
         + Create a private league
       </button>
@@ -45,13 +54,20 @@ export default function LeaderboardPage() {
   );
 
   return (
-    <main className="flex flex-1 flex-col px-4 py-6">
-      <h1 className="mb-1 text-2xl font-extrabold tracking-tight">
+    <main className="flex flex-1 flex-col px-4 py-5" style={{ background: "#0a0a0a" }}>
+      <p
+        className="mb-1 text-[11px] font-black tracking-widest"
+        style={{ color: "#888888" }}
+      >
+        SEASON 2025/26
+      </p>
+      <h1
+        className="mb-5 text-2xl font-black uppercase tracking-tight"
+        style={{ color: "#ffffff", letterSpacing: "-0.02em" }}
+      >
+        <span style={{ color: "#00ff87", marginRight: "6px" }}>|</span>
         Leaderboard
       </h1>
-      <p className="mb-4 text-sm text-zinc-400">
-        Season 2025/26 · Resets in 142 days
-      </p>
       <LeaderboardTabs global={global} club={club} leagues={leagues} />
     </main>
   );
