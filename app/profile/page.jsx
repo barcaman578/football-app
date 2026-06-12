@@ -12,12 +12,16 @@ export default async function OwnProfilePage() {
 
   return (
     <main className="flex flex-1 flex-col items-center px-4 py-12">
-      <h1 className="mb-2 text-3xl font-extrabold tracking-tight">
-        Your Profile
+      <h1
+        className="mb-2 font-extrabold"
+        style={{ fontSize: "28px", letterSpacing: "-0.02em", color: "var(--text)" }}
+      >
+        Your profile
       </h1>
       <Link
         href={`/profile/${profile.username}`}
-        className="mb-8 text-sm text-emerald-400 hover:underline"
+        className="mb-8 text-sm font-medium transition-opacity hover:opacity-60"
+        style={{ color: "var(--text-2)" }}
       >
         View public profile
       </Link>

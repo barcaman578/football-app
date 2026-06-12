@@ -10,27 +10,36 @@ export default async function Home() {
 
   return (
     <main className="flex flex-1 flex-col justify-center px-6 py-16">
-      <p className="mb-2 text-xs font-black uppercase tracking-widest" style={{ color: "#888888" }}>The football knowledge game</p>
-      <h1 className="mb-4 text-4xl font-black uppercase leading-none tracking-tight text-white">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--text-3)" }}>
+        The football knowledge game
+      </p>
+      <h1
+        className="mb-4 font-extrabold leading-none"
+        style={{ fontSize: "40px", letterSpacing: "-0.025em", color: "var(--text)" }}
+      >
         Prove you<br />know football.
       </h1>
-      <p className="mb-10 text-sm leading-relaxed" style={{ color: "#888888" }}>
+      <p className="mb-10 text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>
         Predict matches, debate with fans, and climb the global leaderboard.
       </p>
       <div className="flex flex-col gap-3">
         <Link
           href="/signup"
-          className="px-5 py-3 text-center text-sm font-black uppercase tracking-widest text-black transition hover:opacity-90"
-          style={{ background: "#00ff87" }}
+          className="py-3 text-center text-sm font-bold transition-opacity hover:opacity-80"
+          style={{ background: "var(--btn-bg)", color: "var(--btn-text)", borderRadius: "10px" }}
         >
-          Get Started
+          Get started
         </Link>
         <Link
           href="/login"
-          className="border px-5 py-3 text-center text-sm font-black uppercase tracking-widest text-white transition hover:border-[#444444]"
-          style={{ borderColor: "#333333" }}
+          className="py-3 text-center text-sm font-semibold transition-opacity hover:opacity-60"
+          style={{
+            border: "1px solid var(--border-strong)",
+            color: "var(--text)",
+            borderRadius: "10px",
+          }}
         >
-          Log In
+          Log in
         </Link>
       </div>
     </main>

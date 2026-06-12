@@ -6,13 +6,13 @@ export default function PredictionCategory({ title, points, deadline, options })
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="border-b px-0 py-4" style={{ borderColor: "#222222" }}>
+    <div className="py-4" style={{ borderBottom: "1px solid var(--border)" }}>
       <div className="mb-3 flex items-center justify-between gap-2">
-        <p className="text-sm font-bold text-white">{title}</p>
-        <span className="text-xs font-black" style={{ color: "#00ff87" }}>+{points} pts</span>
+        <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>{title}</p>
+        <span className="text-xs font-bold" style={{ color: "var(--text-2)" }}>+{points} pts</span>
       </div>
       {deadline && (
-        <p className="mb-3 text-xs" style={{ color: "#888888" }}>Closes {deadline}</p>
+        <p className="mb-3 text-xs" style={{ color: "var(--text-3)" }}>Closes {deadline}</p>
       )}
       <div className="flex flex-wrap gap-2">
         {options.map((option) => (
@@ -20,11 +20,11 @@ export default function PredictionCategory({ title, points, deadline, options })
             key={option}
             type="button"
             onClick={() => setSelected(option)}
-            className="px-3 py-1.5 text-xs font-bold transition"
+            className="px-3 py-1.5 text-xs font-semibold transition-opacity rounded-[8px]"
             style={
               selected === option
-                ? { background: "#00ff87", color: "#0a0a0a", border: "1px solid #00ff87" }
-                : { background: "transparent", color: "#888888", border: "1px solid #333333" }
+                ? { background: "var(--btn-bg)", color: "var(--btn-text)", border: "1px solid var(--btn-bg)" }
+                : { background: "transparent", color: "var(--text-2)", border: "1px solid var(--border-strong)" }
             }
           >
             {option}

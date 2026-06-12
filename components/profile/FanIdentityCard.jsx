@@ -1,30 +1,36 @@
 export default function FanIdentityCard({ identity }) {
   return (
-    <div className="mt-4 w-full max-w-sm rounded-md border border-zinc-800 bg-zinc-900 p-4 text-left">
-      <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-zinc-400">
-        Fan Identity
+    <div
+      className="mt-4 w-full max-w-sm p-4 text-left"
+      style={{ borderRadius: "16px", border: "1px solid var(--border)", background: "var(--surface)" }}
+    >
+      <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide" style={{ color: "var(--text-3)" }}>
+        Fan identity
       </h2>
       <dl className="flex flex-col gap-2 text-sm">
-        <div className="flex justify-between">
-          <dt className="text-zinc-500">Club</dt>
-          <dd className="font-semibold text-white">{identity.club}</dd>
-        </div>
-        <div className="flex justify-between">
-          <dt className="text-zinc-500">Nation</dt>
-          <dd className="font-semibold text-white">{identity.nation}</dd>
-        </div>
-        <div className="flex justify-between">
-          <dt className="text-zinc-500">Fan since</dt>
-          <dd className="font-semibold text-white">{identity.fanSince}</dd>
-        </div>
+        {[
+          { label: "Club", value: identity.club },
+          { label: "Nation", value: identity.nation },
+          { label: "Fan since", value: identity.fanSince },
+        ].map(({ label, value }) => (
+          <div key={label} className="flex justify-between">
+            <dt style={{ color: "var(--text-3)" }}>{label}</dt>
+            <dd className="font-semibold" style={{ color: "var(--text)" }}>{value}</dd>
+          </div>
+        ))}
       </dl>
       <div className="mt-3">
-        <p className="mb-1 text-xs text-zinc-500">Top 5 players of all time</p>
+        <p className="mb-2 text-xs" style={{ color: "var(--text-3)" }}>Top 5 players of all time</p>
         <div className="flex flex-wrap gap-2">
           {identity.topPlayers.map((player) => (
             <span
               key={player}
-              className="rounded-full border border-zinc-700 px-2 py-1 text-xs font-semibold text-zinc-300"
+              className="px-2 py-1 text-xs font-semibold"
+              style={{
+                borderRadius: "999px",
+                border: "1px solid var(--border-strong)",
+                color: "var(--text-2)",
+              }}
             >
               {player}
             </span>

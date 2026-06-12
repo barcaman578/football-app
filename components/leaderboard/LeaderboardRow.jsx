@@ -1,74 +1,58 @@
-const RANK_COLOR = {
-  1: "#FFD700",
-  2: "#C0C0C0",
-  3: "#CD7F32",
-};
+const MEDAL_COLOR = { 1: "#FFD60A", 2: "#C0C0C0", 3: "#CD7F32" };
 
 export default function LeaderboardRow({ rank, user }) {
   const isUp = user.change > 0;
   const isDown = user.change < 0;
-  const rankColor = RANK_COLOR[rank];
+  const medalColor = MEDAL_COLOR[rank];
   const isCurrentUser = user.isCurrentUser;
 
   return (
     <div
-      className={`flex items-center gap-3 px-3 py-3 ${
-        isCurrentUser
-          ? "border-l-2 bg-[#00ff87]/5"
-          : "border-l-2 border-transparent"
-      }`}
-      style={isCurrentUser ? { borderColor: "#00ff87" } : undefined}
+      className="flex items-center gap-3 px-4 py-3.5"
+      style={{
+        borderLeft: `2px solid ${isCurrentUser ? "var(--row-hl-border)" : "transparent"}`,
+        background: isCurrentUser ? "var(--row-hl-bg)" : "transparent",
+      }}
     >
       {/* Rank */}
       <span
-        className="w-7 shrink-0 text-center font-black tabular-nums"
+        className="w-7 shrink-0 text-center tabular-nums"
         style={{
-          fontSize: rank <= 3 ? "1rem" : "0.8rem",
-          color: rankColor ?? "#444444",
+          fontSize: rank <= 3 ? "1rem" : "0.85rem",
+          fontWeight: rank <= 3 ? 700 : 500,
+          color: medalColor ?? "var(--text-4)",
+          fontVariantNumeric: "tabular-nums",
         }}
       >
         {rank}
       </span>
 
-      {/* Avatar */}
-      <div
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-sm text-sm font-black"
-        style={{
-          background: "#1a1a1a",
-          color: rankColor ?? (isCurrentUser ? "#00ff87" : "#888888"),
-          border: `1px solid ${rankColor ? rankColor + "40" : "#222222"}`,
-        }}
-      >
-        {user.displayName.charAt(0).toUpperCase()}
-      </div>
-
       {/* Name + club */}
       <div className="flex-1 min-w-0">
-        <p
-          className="text-sm font-bold truncate"
-          style={{ color: isCurrentUser ? "#00ff87" : "#ffffff" }}
-        >
+        <p className="text-sm font-semibold truncate" style={{ color: "var(--text)" }}>
           {user.displayName}
         </p>
-        <p className="text-xs" style={{ color: "#888888" }}>{user.club}</p>
+        <p className="text-xs mt-0.5" style={{ color: "var(--text-3)" }}>
+          {user.club}
+        </p>
       </div>
 
       {/* Points + change */}
       <div className="text-right shrink-0">
         <p
-          className="font-black tabular-nums"
+          className="font-bold tabular-nums"
           style={{
             fontSize: "0.95rem",
             fontVariantNumeric: "tabular-nums",
-            color: rankColor ?? (isCurrentUser ? "#00ff87" : "#ffffff"),
+            color: medalColor ?? "var(--text)",
           }}
         >
           {user.points.toLocaleString()}
         </p>
         <p
-          className="text-[11px] font-semibold"
+          className="text-[11px] font-semibold mt-0.5"
           style={{
-            color: isUp ? "#00ff87" : isDown ? "#ff4444" : "#444444",
+            color: isUp ? "#16a34a" : isDown ? "#dc2626" : "var(--text-4)",
           }}
         >
           {isUp ? `▲ ${user.change}` : isDown ? `▼ ${Math.abs(user.change)}` : "—"}

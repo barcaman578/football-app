@@ -5,47 +5,63 @@ import { updateProfile } from "@/lib/actions/profile";
 
 const initialState = { error: null, success: null };
 
-const inputClass = "border px-3 py-2.5 text-sm text-white outline-none focus:border-[#00ff87] w-full";
-const inputStyle = { background: "#111111", borderColor: "#333333" };
-const labelClass = "text-xs font-black uppercase tracking-widest";
-const labelStyle = { color: "#888888" };
-
 export default function ProfileForm({ profile }) {
   const [state, formAction, pending] = useActionState(updateProfile, initialState);
+
+  const labelStyle = { color: "var(--text-2)" };
+  const inputStyle = {
+    background: "var(--input-bg)",
+    borderColor: "var(--input-border)",
+    color: "var(--input-text)",
+    borderRadius: "8px",
+  };
 
   return (
     <form action={formAction} className="flex w-full max-w-sm flex-col gap-4">
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="username" className={labelClass} style={labelStyle}>Username</label>
-        <input id="username" name="username" defaultValue={profile?.username ?? ""} required pattern="[a-z0-9_]{3,20}" className={inputClass} style={inputStyle} />
-        <p className="text-xs" style={{ color: "#444444" }}>3–20 chars: lowercase, numbers, underscores.</p>
+        <label htmlFor="username" className="text-xs font-semibold uppercase tracking-widest" style={labelStyle}>
+          Username
+        </label>
+        <input
+          id="username" name="username" defaultValue={profile?.username ?? ""}
+          required pattern="[a-z0-9_]{3,20}"
+          className="border px-3 py-2.5 text-sm"
+          style={inputStyle}
+        />
+        <p className="text-xs" style={{ color: "var(--text-4)" }}>3–20 chars: lowercase, numbers, underscores.</p>
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="displayName" className={labelClass} style={labelStyle}>Display Name</label>
-        <input id="displayName" name="displayName" defaultValue={profile?.display_name ?? ""} className={inputClass} style={inputStyle} />
+        <label htmlFor="displayName" className="text-xs font-semibold uppercase tracking-widest" style={labelStyle}>
+          Display name
+        </label>
+        <input id="displayName" name="displayName" defaultValue={profile?.display_name ?? ""} className="border px-3 py-2.5 text-sm" style={inputStyle} />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="bio" className={labelClass} style={labelStyle}>Bio</label>
-        <textarea id="bio" name="bio" rows={3} defaultValue={profile?.bio ?? ""} className={inputClass} style={inputStyle} />
+        <label htmlFor="bio" className="text-xs font-semibold uppercase tracking-widest" style={labelStyle}>
+          Bio
+        </label>
+        <textarea id="bio" name="bio" rows={3} defaultValue={profile?.bio ?? ""} className="border px-3 py-2.5 text-sm" style={inputStyle} />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="avatarUrl" className={labelClass} style={labelStyle}>Avatar URL</label>
-        <input id="avatarUrl" name="avatarUrl" type="url" defaultValue={profile?.avatar_url ?? ""} placeholder="https://..." className={inputClass} style={inputStyle} />
+        <label htmlFor="avatarUrl" className="text-xs font-semibold uppercase tracking-widest" style={labelStyle}>
+          Avatar URL
+        </label>
+        <input id="avatarUrl" name="avatarUrl" type="url" defaultValue={profile?.avatar_url ?? ""} placeholder="https://..." className="border px-3 py-2.5 text-sm" style={inputStyle} />
       </div>
 
-      {state?.error && <p className="text-sm" style={{ color: "#ff4444" }}>{state.error}</p>}
-      {state?.success && <p className="text-sm font-semibold" style={{ color: "#00ff87" }}>{state.success}</p>}
+      {state?.error && <p className="text-sm" style={{ color: "#dc2626" }}>{state.error}</p>}
+      {state?.success && <p className="text-sm font-semibold" style={{ color: "#16a34a" }}>{state.success}</p>}
 
       <button
         type="submit"
         disabled={pending}
-        className="mt-2 py-3 text-sm font-black uppercase tracking-widest text-black transition hover:opacity-90 disabled:opacity-50"
-        style={{ background: "#00ff87" }}
+        className="mt-2 py-3 text-sm font-bold transition-opacity hover:opacity-80 disabled:opacity-50"
+        style={{ background: "var(--btn-bg)", color: "var(--btn-text)", borderRadius: "10px" }}
       >
-        {pending ? "Saving..." : "Save Profile"}
+        {pending ? "Saving..." : "Save profile"}
       </button>
     </form>
   );

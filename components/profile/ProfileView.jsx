@@ -3,13 +3,9 @@ import SeasonStats from "./SeasonStats";
 import FanIdentityCard from "./FanIdentityCard";
 
 export default function ProfileView({ profile }) {
-  const initial = (profile.display_name || profile.username || "?")
-    .charAt(0)
-    .toUpperCase();
+  const initial = (profile.display_name || profile.username || "?").charAt(0).toUpperCase();
 
-  const rank = leaderboardUsers.findIndex(
-    (user) => user.username === profile.username
-  );
+  const rank = leaderboardUsers.findIndex((user) => user.username === profile.username);
   const leaderboardEntry = rank >= 0 ? leaderboardUsers[rank] : null;
 
   const stats = {
@@ -32,21 +28,28 @@ export default function ProfileView({ profile }) {
         <img
           src={profile.avatar_url}
           alt={profile.username}
-          className="h-24 w-24 rounded-full border-2 border-emerald-500 object-cover"
+          className="h-24 w-24 rounded-full object-cover"
+          style={{ border: "2px solid var(--border-strong)" }}
         />
       ) : (
-        <div className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-emerald-500 bg-zinc-900 text-3xl font-bold text-emerald-400">
+        <div
+          className="flex h-24 w-24 items-center justify-center rounded-full text-3xl font-bold"
+          style={{ background: "var(--surface-2)", color: "var(--text)", border: "2px solid var(--border-strong)" }}
+        >
           {initial}
         </div>
       )}
 
-      <h1 className="mt-4 text-2xl font-extrabold tracking-tight">
+      <h1
+        className="mt-4 font-extrabold"
+        style={{ fontSize: "24px", letterSpacing: "-0.02em", color: "var(--text)" }}
+      >
         {profile.display_name || profile.username}
       </h1>
-      <p className="text-zinc-500">@{profile.username}</p>
+      <p className="text-sm mt-0.5" style={{ color: "var(--text-3)" }}>@{profile.username}</p>
 
       {profile.bio && (
-        <p className="mt-4 text-sm text-zinc-300">{profile.bio}</p>
+        <p className="mt-4 text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{profile.bio}</p>
       )}
 
       <SeasonStats stats={stats} />

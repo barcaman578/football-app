@@ -3,9 +3,9 @@
 import { useState } from "react";
 
 const tabs = [
-  { id: "friends", label: "FRIENDS" },
-  { id: "similar", label: "SIMILAR" },
-  { id: "takes", label: "HOT TAKES" },
+  { id: "friends", label: "Friends" },
+  { id: "similar", label: "Similar" },
+  { id: "takes", label: "Hot takes" },
 ];
 
 export default function SocialTabs({ friends, similar, takes }) {
@@ -14,17 +14,19 @@ export default function SocialTabs({ friends, similar, takes }) {
 
   return (
     <div className="w-full">
-      <div className="mb-4 flex border-b" style={{ borderColor: "#222222" }}>
+      <div
+        className="mb-5 flex rounded-[10px] p-1"
+        style={{ background: "var(--surface-2)" }}
+      >
         {tabs.map((t) => (
           <button
             key={t.id}
             type="button"
             onClick={() => setTab(t.id)}
-            className="flex-1 pb-2.5 pt-1 text-xs font-black tracking-widest transition-colors"
+            className="flex-1 rounded-[8px] py-2 text-sm font-semibold transition-all"
             style={{
-              color: tab === t.id ? "#00ff87" : "#444444",
-              borderBottom: tab === t.id ? "2px solid #00ff87" : "2px solid transparent",
-              marginBottom: "-1px",
+              background: tab === t.id ? "var(--btn-bg)" : "transparent",
+              color: tab === t.id ? "var(--btn-text)" : "var(--text-2)",
             }}
           >
             {t.label}
