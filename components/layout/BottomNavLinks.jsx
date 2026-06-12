@@ -24,11 +24,11 @@ export default function BottomNavLinks() {
           <Link
             key={href}
             href={href}
-            className={`flex flex-1 flex-col items-center gap-1 py-2.5 text-xs font-semibold transition ${
+            className={`flex flex-1 flex-col items-center gap-2.5 py-5 text-xs font-semibold transition ${
               active ? "text-emerald-400" : "text-zinc-500 hover:text-zinc-300"
             }`}
           >
-            <Icon size={20} />
+            <Icon size={26} />
             {label}
           </Link>
         );

@@ -13,9 +13,14 @@ export default async function Header() {
   const profile = user ? await getOwnProfile() : null;
 
   return (
-    <header className="flex items-center justify-between border-b border-zinc-800 bg-black px-6 py-4">
-      <Link href="/" className="text-xl font-extrabold tracking-tight text-white">
-        Ball<span className="text-emerald-400">knowledge</span>
+    <header className="flex items-center justify-between border-b border-zinc-800 bg-black px-4 py-3">
+      <Link href="/" className="flex items-center gap-1.5">
+        <span className="text-xl font-black italic tracking-tight text-white">
+          BALL
+        </span>
+        <span className="rounded bg-emerald-500 px-1.5 py-0.5 text-[11px] font-black italic tracking-widest text-black">
+          KNOWLEDGE
+        </span>
       </Link>
 
       <nav className="flex items-center gap-4">
